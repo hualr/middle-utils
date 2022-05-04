@@ -1,0 +1,17 @@
+# 这里的common被模板化
+COMMON: &common
+  SECRET_KEY: insecure
+  DEBUG: False
+
+#继承完整属性 覆盖部分属性
+DEVELOPMENT: &development
+  <<: *common
+  DEBUG: True
+
+STAGING: &staging
+  <<: *common
+  SECRET_KEY: sortasecure
+
+PRODUCTION: &production
+  <<: *common
+  SECRET_KEY: mdd1##$$%^!DSA#FDSF

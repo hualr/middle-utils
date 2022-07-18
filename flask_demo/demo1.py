@@ -1,8 +1,10 @@
 from flask import Flask, request, json, make_response, jsonify
 import logging
-import exk
+
+from prometheus_flask_exporter import PrometheusMetrics
 
 app = Flask(__name__)
+metrics = PrometheusMetrics(app)
 
 # logger = logging.getLogger('atp_log')
 # logger.setLevel(logging.DEBUG)
@@ -24,6 +26,15 @@ def hi():
 
 @app.route('/hi2')
 def hi2():
+    data = {
+        "name": 1
+    }
+
+    return make_response(data)\
+
+@app.route('/hi3')
+def hi3():
+    print(1/0)
     data = {
         "name": 1
     }

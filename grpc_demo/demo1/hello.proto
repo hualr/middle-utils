@@ -1,0 +1,15 @@
+syntax = "proto3";
+package base_package;
+
+
+service HelloWorld {//定义服务,用在rpc传输中
+  rpc Test(request) returns (response){}
+}
+message request {
+  string text = 1;
+}
+message response{
+  string text = 1;
+}
+
+

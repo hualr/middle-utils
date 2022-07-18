@@ -106,7 +106,6 @@ class KafkaTest(object):
         last_offset = self._topic.latest_available_offsets()
         print("最近的偏移量offset=", last_offset)
         try:
-            print("get info,直接运行速度太快，msg无法获取，直接报异常了")
             msg, exc = producer.get_delivery_report(block=False)
             print("msg", msg)
             if exc is not None:

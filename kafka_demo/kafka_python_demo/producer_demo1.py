@@ -4,7 +4,8 @@ from kafka import KafkaConsumer, KafkaProducer
 
 
 def producer():
-    producer = KafkaProducer(bootstrap_servers=['101.201.67.114:9092'],value_serializer=(lambda v: json.dumps(v).encode('utf-8')))
+    producer = KafkaProducer(bootstrap_servers=['101.201.67.114:9092'],
+                             value_serializer=(lambda v: json.dumps(v).encode('utf-8')))
     message = {
         "天空的蓝色": 'blue'
     }
@@ -13,7 +14,7 @@ def producer():
 
     # result = future.get(timeout=10)
     # print(result)
-    producer.send('fizzbuzz', {'foo': 'bar'})
+    producer.send('my_topic', {'foo': 'bar'})
 
 
 if __name__ == '__main__':

@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.routeguide";
+option java_outer_classname = "Test_StreamProto";
+option objc_class_prefix = "RTG";
+
+package test_stream;
+
+// Interface exported by the server.
+service Test_Stream {
+  // A server-to-client streaming RPC.
+  //rpc ListFeatures(Rectangle) returns (stream Feature) {}
+  rpc ListFeatures(Number) returns (stream Reply) {}
+  rpc ListFeatures2(stream Number) returns (stream Reply) {}
+}
+
+message Number {
+  int32 number = 1;
+}
+
+message Reply {
+  string reply = 1;
+}

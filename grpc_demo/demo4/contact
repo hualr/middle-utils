@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+// 定义一个服务
+service Contact {
+    // 客户端通信给服务端，通信方式可以随意选择，这里我选择第4种通信方式
+    rpc sendStatus (stream ClientMsg) returns (stream Result);
+    // 客户端发送一个空消息给服务端，服务端就能给客户端通信了
+    rpc getTask (Empty) returns (stream ServerMsg);
+    // 客户端接受完服务端消息处理完后，再告诉服务端。这个tellResult也可以不要，看具体需求
+    rpc tellResult (stream Result) returns (Empty);
+}
+
+message ClientMsg {
+    string msg = 1;
+}
+
+message ServerMsg {
+    string task = 1;
+}
+
+message Empty {
+
+}
+
+message Result {
+    string ret = 1;
+}
